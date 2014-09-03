@@ -1,0 +1,70 @@
+﻿<Window x:Class="BinaerSysteme.Grapher"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Grapher" Height="700" Width="600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="130" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="M1" Grid.Row="1" Grid.Column="0" />
+            <TextBlock Text="M2" Grid.Row="2" Grid.Column="0" />
+            <TextBlock Text="JumpHeight" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"/>
+
+            <TextBlock Text="p" Grid.Row="0" Grid.Column="1" />
+            <TextBlock Text="q" Grid.Row="0" Grid.Column="2" />
+            <TextBlock Text="p/q" Grid.Row="0" Grid.Column="3" />
+
+            <TextBox x:Name="tbP1" Text="100" Grid.Row="1" Grid.Column="1" KeyUp="e_p1_key_up" />
+            <TextBox x:Name="tbQ1" Text="200" Grid.Row="1" Grid.Column="2" KeyUp="e_q1_key_up" />
+            <TextBox x:Name="tbPQ1" Text="0.5" Grid.Row="1" Grid.Column="3" KeyUp="e_pq1_key_up" />
+
+            <TextBox x:Name="tbP2" Text="100" Grid.Row="2" Grid.Column="1" KeyUp="e_p2_key_up" />
+            <TextBox x:Name="tbQ2" Text="200" Grid.Row="2" Grid.Column="2" KeyUp="e_q2_key_up" />
+            <TextBox x:Name="tbPQ2" Text="0.5" Grid.Row="2" Grid.Column="3" KeyUp="e_pq2_key_up" />
+
+            <TextBox x:Name="tbJS" Text="{Binding ElementName=sliderJH, Mode=TwoWay, Path=Value, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="3" KeyUp="e_pq2_key_up" />
+
+            <Slider x:Name="slider1" Grid.Row="1" Grid.Column="5" Minimum="0" Maximum="1" TickFrequency="0.001" IsSnapToTickEnabled="True" Value="0.5" ValueChanged="e_slider1_changed" PreviewMouseLeftButtonUp="e_slider1_mouse_up" />
+            <Slider x:Name="slider2" Grid.Row="2" Grid.Column="5" Minimum="0" Maximum="1" TickFrequency="0.001" IsSnapToTickEnabled="True" Value="0.5" ValueChanged="e_slider2_changed" PreviewMouseLeftButtonUp="e_slider2_mouse_up" />
+            <Slider x:Name="sliderJH" Grid.Row="3" Grid.Column="5" Value="0.3" Minimum="0" Maximum="0.1" TickFrequency="0.0005" IsSnapToTickEnabled="True" PreviewMouseLeftButtonUp="sliderJH_MouseLeftButtonUp"/>
+        </Grid>
+        <Grid Grid.Row="1">
+
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+                <StackPanel x:Name="stpLegendCol" Grid.Column="0" Orientation="Vertical" />
+                <StackPanel x:Name="stpLegendName" Grid.Column="1" Orientation="Vertical" />
+            </Grid>
+        </Grid>
+        <Grid x:Name="grdGraph" Grid.Row="3">
+            <Canvas x:Name="canvas" Margin="5, 5, 5, 5" Background="LightBlue" SizeChanged="e_size_changed" MouseMove="e_mouse_move" MouseLeave="e_mouse_leave" />
+        </Grid>
+        <Grid Grid.Row="4">
+            <TextBlock x:Name="txtMousePos" Text="Out of range" />
+        </Grid>
+    </Grid>
+</Window>

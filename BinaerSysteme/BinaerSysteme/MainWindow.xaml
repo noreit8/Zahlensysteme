@@ -1,0 +1,53 @@
+﻿<Window x:Class="BinaerSysteme.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Binär-Systeme" Height="577" Width="847.176" Background="Silver" ResizeMode="NoResize">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="372*"/>
+            <ColumnDefinition Width="145*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="ButtonTest" Content="Test" HorizontalAlignment="Left" Margin="10,6,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.39,0.801" Click="ButtonTest_Click"/>
+        <TextBox x:Name="TextBoxVergleichstabelle1" HorizontalAlignment="Left" Height="169" Margin="10,233,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="167" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+        <TextBox x:Name="TextBoxVergleichstabelle2" HorizontalAlignment="Left" Height="169" Margin="177,233,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="467" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="TextBoxVergleichstabelle3" HorizontalAlignment="Left" Height="169" Margin="44,233,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Column="1"/>
+        <Button x:Name="ButtonClear" Content="Löschen" HorizontalAlignment="Left" Margin="102,5,0,0" VerticalAlignment="Top" Width="75" Click="ButtonClear_Click" RenderTransformOrigin="0.88,0.55"/>
+        <TextBlock TextAlignment="Center" HorizontalAlignment="Left" Margin="10,215,0,0" TextWrapping="Wrap" Text="Unit Interval Random Decimal " VerticalAlignment="Top" Height="16" Width="167"/>
+        <TextBlock TextAlignment="Center" HorizontalAlignment="Left" Margin="182,215,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="16" Width="462" Grid.ColumnSpan="2"><Run Text="=> P/Q converted Binary"/></TextBlock>
+        <TextBlock TextAlignment="Center" HorizontalAlignment="Left" TextWrapping="Wrap" Text="=> P2/Q2 back-converted Decimal" VerticalAlignment="Top" Height="16" Width="180" Margin="44,215,0,0" Grid.Column="1"/>
+        <TextBox x:Name="TextBoxPDurchQ" TextAlignment="Center" HorizontalAlignment="Left" Height="19" Margin="68,135,0,0" TextWrapping="Wrap" Text="{Binding ElementName=SliderPQ, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Path=Value}" VerticalAlignment="Top" Width="109" KeyUp="TextBoxPDurchQ_KeyUp"/>
+        <TextBlock TextAlignment="Center" HorizontalAlignment="Left" Margin="10,137,0,0" TextWrapping="Wrap" Text="P/Q = " VerticalAlignment="Top" Height="19" Width="41"/>
+        <TextBox x:Name="TextBoxP2DurchQ2" TextAlignment="Center" HorizontalAlignment="Left" Height="19" Margin="68,159,0,0" TextWrapping="Wrap" Text="{Binding ElementName=SliderP2Q2, Path=Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="109" KeyUp="TextBoxP2DurchQ2_KeyUp"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,160,0,0" TextWrapping="Wrap" Text="P2/Q2= " VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBoxAnzahlDerPunkte" TextAlignment="Center" Grid.Column="1" HorizontalAlignment="Left" Height="16" Margin="164,9,0,0" TextWrapping="Wrap" Text="{Binding ElementName=SliderAnzahlDerPunkte, Path=Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="56"/>
+        <TextBlock HorizontalAlignment="Left" Margin="48,10,0,0" TextWrapping="Wrap" Text="Anzahl der Punkte = " VerticalAlignment="Top" Grid.Column="1"/>
+        <TextBox x:Name="TextBoxXStreckungsfaktor" TextAlignment="Center" HorizontalAlignment="Left" Height="17" Margin="332,6,0,0" TextWrapping="Wrap" Text="{Binding ElementName=SliderXStreckungsfaktor, Path=Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="85"/>
+        <TextBox x:Name="TextBoxYStreckungsfaktor" TextAlignment="Center" HorizontalAlignment="Left" Height="17" Margin="332,23,0,0" TextWrapping="Wrap" Text="{Binding ElementName=SliderYStreckungsfaktor, Path=Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="85" RenderTransformOrigin="-1.3,1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="201,6,0,0" TextWrapping="Wrap" Text="x/y - Streckungsfaktor: " VerticalAlignment="Top" Height="16" Width="126"/>
+        <TextBox x:Name="TextBoxAnzahlNachkommastellenBinaer" TextAlignment="Center" HorizontalAlignment="Left" Height="16" Margin="164,61,0,0" TextWrapping="Wrap" Text="{Binding ElementName=SliderAnzahlNachkommastellen, Path=Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="56" Grid.Column="1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="588,61,0,0" TextWrapping="Wrap" Text="Anzahl der Nachkommastellen = " VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="TextBoxEpsilonJump" TextAlignment="Center" HorizontalAlignment="Left" Height="17" Margin="68,113,0,0" TextWrapping="Wrap" Text="{Binding Mode=TwoWay, ElementName=SliderEpsilon,Path=Value,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="109"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,114,0,0" TextWrapping="Wrap" Text="EPSILON: " VerticalAlignment="Top" Height="16" Width="56"/>
+        <TextBox x:Name="TextBoxTotalNumberOfJumps" HorizontalAlignment="Left" Height="17" Margin="177,418,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="64"/>
+        <TextBlock TextAlignment="Center" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Anzahl der Sprünge größer EPSILON = " VerticalAlignment="Top" Height="38" Width="124" Margin="58,407,0,0" RenderTransformOrigin="-1.194,-0.125"/>
+        <TextBox x:Name="TextBoxNumberOfJumpsPercentage" HorizontalAlignment="Left" Height="17" Margin="177,474,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="64"/>
+        <TextBlock TextAlignment="Center" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Prozentanteil an Gesamtanzahl der Punkte = " VerticalAlignment="Top" Height="49" Width="124" Margin="53,457,0,0"/>
+        <Slider x:Name="SliderEpsilon" Value="0.01" Minimum="0" TickFrequency="0.000001" IsSnapToTickEnabled="True" Maximum="{Binding ElementName= TextBoxEpsilonMax, Path=Text, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="182,114,0,0" VerticalAlignment="Top" Width="643" PreviewMouseLeftButtonUp="SliderEpsilon_PreviewMouseLeftButtonUp" Grid.ColumnSpan="2"/>
+        <Slider x:Name="SliderPQ" Minimum="0" Maximum="1" Value="0.5" TickFrequency="0.001" IsSnapToTickEnabled="True" HorizontalAlignment="Left" Margin="182,137,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.083,-0.333" Width="643" Grid.ColumnSpan="2" PreviewMouseLeftButtonUp="SliderPQ_PreviewMouseLeftButtonUp"/>
+        <Slider x:Name="SliderP2Q2" Minimum="0" Maximum="1" Value="0.555" TickFrequency="0.001" IsSnapToTickEnabled="True" HorizontalAlignment="Left" Margin="182,160,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.083,-0.333" Width="643" Grid.ColumnSpan="2" PreviewMouseUp="SliderP2Q2_PreviewMouseUp"/>
+        <TextBox x:Name="TextBoxSprungstellen" HorizontalAlignment="Left" Height="131" Margin="447,407,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="382" Grid.ColumnSpan="2" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+        <TextBlock TextAlignment="Center" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Sprungstellen größer EPSILON: " VerticalAlignment="Top" Height="38" Width="95" Margin="352,407,0,0" RenderTransformOrigin="-1.194,-0.125"/>
+        <Slider x:Name="SliderXStreckungsfaktor" Value="0.8" Minimum="0" TickFrequency="0.1" IsSnapToTickEnabled="True" Maximum="3" HorizontalAlignment="Left" Margin="422,6,0,0" VerticalAlignment="Top" Width="152" PreviewMouseLeftButtonUp="SliderXStreckungsfaktor_PreviewMouseLeftButtonUp"/>
+        <Slider x:Name="SliderYStreckungsfaktor" Value="0.8" Minimum="0" TickFrequency="0.1" IsSnapToTickEnabled="True" Maximum="3" HorizontalAlignment="Left" Margin="422,23,0,0" VerticalAlignment="Top" Width="152" PreviewMouseLeftButtonUp="SliderYStreckungsfaktor_PreviewMouseLeftButtonUp"/>
+        <Slider x:Name="SliderAnzahlNachkommastellen" Minimum="0" Maximum="300" TickFrequency="1" IsSnapToTickEnabled="True" Value="50" HorizontalAlignment="Left" Margin="588,77,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.083,-0.333" Width="237" Grid.ColumnSpan="2" PreviewMouseLeftButtonUp="SliderAnzahlNachkommastellen_PreviewMouseLeftButtonUp"/>
+        <Slider x:Name="SliderAnzahlDerPunkte" Value="100" Minimum="0" Maximum="1000" TickFrequency="50" IsSnapToTickEnabled="True" HorizontalAlignment="Left" Margin="588,25,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.083,-0.333" Width="237" Grid.ColumnSpan="2" PreviewMouseLeftButtonUp="SliderAnzahlDerPunkte_PreviewMouseLeftButtonUp"/>
+        <Button x:Name="ButtonGrapher" Content="Exact Plots" HorizontalAlignment="Left" Margin="10,61,0,0" VerticalAlignment="Top" Width="167" Click="ButtonGrapher_Click" Height="39"/>
+        <TextBlock TextAlignment="Center" HorizontalAlignment="Left" Margin="342,194,0,0" TextWrapping="Wrap" Text="OUTPUT: " VerticalAlignment="Top" Height="16" Width="167"/>
+        <CheckBox x:Name="CheckBoxPlotPreviews" Content="Plot Previews" HorizontalAlignment="Left" Margin="10,26,0,0" VerticalAlignment="Top"/>
+        <Separator HorizontalAlignment="Left" Height="100" Margin="10,137,0,0" VerticalAlignment="Top" Width="815" RenderTransformOrigin="0.91,0.11" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="TextBoxEpsilonMax" TextAlignment="Center" HorizontalAlignment="Left" Height="18" Margin="332,82,0,0" TextWrapping="Wrap" Text="0.3" VerticalAlignment="Top" Width="85" RenderTransformOrigin="-1.227,-0.889"/>
+        <TextBlock HorizontalAlignment="Left" Margin="201,83,0,0" TextWrapping="Wrap" Text="EPSILON Max: " VerticalAlignment="Top" Height="16" Width="126"/>
+        <Button x:Name="ButtonDefault" Content="Default" HorizontalAlignment="Left" Margin="102,30,0,0" VerticalAlignment="Top" Width="75" Height="19" Click="ButtonDefault_Click"/>
+
+    </Grid>
+</Window>
